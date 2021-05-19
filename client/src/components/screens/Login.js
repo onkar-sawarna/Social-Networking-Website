@@ -25,8 +25,11 @@ export const Signin = () => {
         }).then(res=>res.json())
         .then(data=>{
             if(data.error){
+                console.log(data.error);
                 //Mo.toast({html:data.error,classes:"#c62828 red darken-3"})
             }else{
+                localStorage.setItem("jwt",data.token)
+                localStorage.setItem("user",JSON.stringify(data.user))
                 Mo.toast({html:"Signed In successfull",classes:"#4caf50 green"})
                 history.push("/")
             }
